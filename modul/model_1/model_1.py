@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
+import joblib
 
 class ImageClassifier:
     def __init__(self, dataset_path, image_size=(100, 100), test_size=0.2, random_state=42):
@@ -35,8 +36,10 @@ class ImageClassifier:
         X_train, X_test, y_train, y_test = train_test_split(self.data, self.labels, test_size=self.test_size, random_state=self.random_state)
         self.classifier = RandomForestClassifier(n_estimators=100, random_state=self.random_state)
         self.classifier.fit(X_train, y_train)
+        
         predictions = self.classifier.predict(X_test)
         accuracy = accuracy_score(y_test, predictions)
+        joblib.dump(self.classifier, './modeel_1.h5')
         return accuracy
 
     def predict(self, image_path):

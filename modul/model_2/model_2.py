@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import accuracy_score
-
+import joblib
 class ImageClassifier:
     def __init__(self, dataset_path, image_size=(100, 100), test_size=0.2, random_state=42):
         self.dataset_path = dataset_path
@@ -36,6 +36,7 @@ class ImageClassifier:
         self.classifier.fit(X_train, y_train)
         predictions = self.classifier.predict(X_test)
         accuracy = accuracy_score(y_test, predictions)
+        joblib.dump(self.classifier, './modeel_2.h5')
         return accuracy
 
     def predict(self, image_path):
