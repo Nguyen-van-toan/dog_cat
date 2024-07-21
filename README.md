@@ -24,8 +24,8 @@ This project aims to classify images of dogs and cats using a machine learning m
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/dog-cat-classification.git
-   cd dog-cat-classification
+   git clone https://github.com/vantoan2905/dog_cat.git
+   cd dog_cat
    ```
 
 2. Create a virtual environment and activate it:
